@@ -13,7 +13,17 @@ Note: this problem does not require the "compounding interest" formula from the 
 """
 
 ### Your code here ###
+# List the 2022-2023 Annual Cost
+from ast import In
 
-in_state_gift = 0
 
-out_state_gift = 0
+in_state_cost = 30792
+out_state_cost = 47882  
+
+# Calculate the gift amount with the assumption that the gift will return 5% forever 
+in_state_gift = in_state_cost / 0.05
+out_state_gift = out_state_cost / 0.05
+
+# Print the gift amounts to check my work
+print(in_state_gift)
+print(out_state_gift)

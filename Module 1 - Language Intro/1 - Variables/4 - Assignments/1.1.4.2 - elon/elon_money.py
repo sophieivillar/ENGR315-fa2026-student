@@ -14,9 +14,19 @@ Note that Elon's capital will be $33B.
 
 ### all your code below ###
 
+# Defining the variables for the problem
+Principal = 33_000_000_000  # Elon Musk's investment in USD
+rate_10_year = 0.0396  # 10-year bond interest rate
+rate_20_year = 0.0432  # 20-year bond interest rate
+n10 = 10  # number of years for 10-year bond
+n20 = 20  # number of years for 20-year bond
 
 # final answer for 10-year
-ten_year_final = None
+ten_year_final = Principal * ((1 + rate_10_year) ** n10)
 
 # final answer for 20-year
-twenty_year_final = None
+twenty_year_final = Principal * ((1 + rate_20_year) ** n20)
+
+# Print the final values to check my work
+print(ten_year_final)
+print(twenty_year_final)
