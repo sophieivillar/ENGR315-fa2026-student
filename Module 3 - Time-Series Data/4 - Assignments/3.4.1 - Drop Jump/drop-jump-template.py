@@ -90,7 +90,7 @@ def main(full_path_to_file):
         value = force_plate_list[index]
 
         ### your code here ###
-        if value < baseline - delta:
+        if value < baseline + delta:
             take_off_index = index
             break
 
