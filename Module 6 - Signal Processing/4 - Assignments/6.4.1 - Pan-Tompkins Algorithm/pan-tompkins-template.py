@@ -16,28 +16,40 @@ def detect_heartbeats(filepath):
 
     # load data in matrix from CSV file; skip first two rows
     ## your code here
+    data = np.loadtxt(path, delimiter=',', skiprows=2)
 
     # save each vector as own variable
     ## your code here
 
+    time = data[:, 0]
+    signal = data[:, 1]
+
     # identify one column to process. Call that column signal
 
-    signal = -1 ## your code here
+    signal = signal  ## your code here
+
 
     # pass data through LOW PASS FILTER (OPTIONAL)
     ## your code here
 
+
+
+
     # pass data through HIGH PASS FILTER (OPTIONAL) to create BAND PASS result
     ## your code here
+
 
     # pass data through differentiator
     ## your code here
 
+
     # pass data through square function
     ## your code here
 
+
     # pass through moving average window
     ## your code here
+    
 
     # use find_peaks to identify peaks within averaged/filtered data
     # save the peaks result and return as part of testbench result
