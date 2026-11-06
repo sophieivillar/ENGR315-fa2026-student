@@ -76,6 +76,7 @@ def task_2(accelerometer):
     (chi_stat, p_value) = chisquare(f_obs=observed_counts, f_exp=expected_counts, ddof=2)
 
     # print the results
+    print("\n---Task 2: Chi2 Goodness of Fit Test Results---")
     print("Chi2 statistic:", chi_stat)
     print("fitted mean:", fitted_mean)
     print("fitted standard deviation:", fitted_std)
@@ -91,16 +92,17 @@ def task_2(accelerometer):
         print("Fail to reject the null hypothesis.")
 
     # plot a histogram of the accelerometer data with the normal distribution curve overlaid (Learned through Module 5)
+    plt.hist(accelerometer, bins=20, density=True, alpha=0.6, color='skyblue', edgecolor='black', label='Accelerometer Data Histogram')
     x = np.linspace(np.min(accelerometer), np.max(accelerometer), 1000)
     y = norm.pdf(x, loc=fitted_mean, scale=fitted_std)
 
     # plot the normal distribution curve over the histogram of the accelerometer data
-    plt.plot(x, y, label='Fitted Normal Distribution') 
+    plt.plot(x, y, 'r-', linewidth=2, label='Fitted Normal Distribution') 
 
     # include appropriate labels, titles, and legends
-    plt.title('Normal Distribution Fit for RSI Data')
-    plt.xlabel('Accelerometer RSI')
-    plt.ylabel('Probability Density')
+    plt.title('Acceleromter RSI Data Distribution')
+    plt.xlabel('Accelerometer RSI Data')
+    plt.ylabel('Normal Distribution')
     plt.legend()
     plt.show()
 
@@ -114,6 +116,7 @@ def task_3(full_path_to_file):
     participant_f = df[df['trial'].str.startswith('F')]
 
     # print the dataframe containing only the trials from participant 'F'
+    print("\n---Task 3: Participant F RSI Data---")
     print("\nParticipant F RSI Data:")
     print(participant_f)
 
@@ -163,8 +166,11 @@ if __name__ == "__main__":
         # set the significance value
         alpha = 0.05
 
-        # print the results 
-        print("Paired t-test results:")
+        # print the results for task 1
+        print("\n---Task 1: Paired T-Test Results---")
+        print("Null Hypothesis: The force plate and accelerometer RSI values are not significantly different.")
+        print("Alternative Hypothesis: The force plate and accelerometer RSI values are significantly different.")
+        print("Statistical Output:")
         print("t-value:", t_value)
         print("p-value:", p_value)
 
