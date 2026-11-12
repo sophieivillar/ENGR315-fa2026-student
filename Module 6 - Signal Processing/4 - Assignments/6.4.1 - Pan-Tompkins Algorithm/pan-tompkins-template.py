@@ -20,43 +20,42 @@ def detect_heartbeats(filepath):
 
     # save each vector as own variable
     ## your code here
-
     time = data[:, 0]
     signal = data[:, 1]
 
     # identify one column to process. Call that column signal
-
-    signal = signal  ## your code here
-
+    ## your code here
+    signal = signal
 
     # pass data through LOW PASS FILTER (OPTIONAL)
     ## your code here
 
-
-
-
     # pass data through HIGH PASS FILTER (OPTIONAL) to create BAND PASS result
     ## your code here
-
+    fs = 1 / np.mean(np.diff(time))  
+    sos = signal.butter(4, [0.5, 40], btype='bandpass', fs=fs, output='sos')
+    signal = signal.sosfilt(sos, signal)
 
     # pass data through differentiator
     ## your code here
-
+    derivative = np.diff(signal, prepend=signal[0])*fs 
 
     # pass data through square function
     ## your code here
-
+    squared = derivative ** 2
 
     # pass through moving average window
     ## your code here
+    window_size = int(0.150 * fs)
+    window = np.ones(window_size) / window_size
+    averaged = np.convolve(squared, window, mode='same')
     
-
     # use find_peaks to identify peaks within averaged/filtered data
     # save the peaks result and return as part of testbench result
-
     ## your code here peaks,_ = find_peaks(....)
+    peaks, _ = signal.find_peaks(averaged, distance=int(0.6 * fs), prominence=0.25 * np.std(averaged))
 
-    beats = None
+    beats = peaks
 
     # do not modify this line
     return signal, beats
